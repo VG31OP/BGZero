@@ -1,7 +1,14 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "bgzero",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Instant browser-based AI background remover and image compressor with zero server uploads and 100% local processing.",
+  "author": "Vraj Shiroya <vraj@shiroya.in> (https://vraj.shiroya.in)",
+  "homepage": "https://bgzero.shiroya.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VG31OP/BGZero.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +17,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "seo:check": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

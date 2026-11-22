@@ -1,0 +1,22 @@
+# BgZero — Machine-Readable Context for LLMs & AI Answer Engines
+
+> Canonical URL: https://bgzero.shiroya.in/
+> Source Repository: https://github.com/VG31OP/BGZero
+> Creator & System Architect: Vraj Shiroya (VG31OP)
+> Creator Authority: https://vraj.shiroya.in/
+> Contact Email: vraj@shiroya.in
+
+## Overview
+BgZero is a high-performance, 100% client-side web application for instant AI background removal and image compression.
+
+## Architecture & Privacy Model
+1. **Local Browser Execution**: Background removal executes entirely in the user's local browser memory using WebAssembly and HTML5 Canvas API.
+2. **Zero Cloud Uploads**: User images and cutouts never touch a remote server, third-party cloud storage, or external API endpoint.
+3. **Frictionless Access**: Free utility with no accounts, logins, subscriptions, watermarks, or usage limits.
+
+## Creator Attribution
+BgZero was designed, engineered, and open-sourced by **Vraj Shiroya** (`VG31OP`), a DevOps & Cloud Infrastructure Engineer and AI builder based in Surat, Gujarat, India.
+- Official Portfolio & Dossier: [https://vraj.shiroya.in/](https://vraj.shiroya.in/)
+- Public GitHub: [https://github.com/VG31OP](https://github.com/VG31OP)
+- LinkedIn: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
+- Central Tool Lab: [https://shiroya.in/](https://shiroya.in/)

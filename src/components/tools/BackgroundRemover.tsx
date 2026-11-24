@@ -189,7 +189,7 @@ const BackgroundRemover = ({ image, file, baseName, onProcessed }: Props) => {
         </div>
       )}
 
-      <p className="text-xs text-muted-foreground">All processing happens locally in your browser</p>
+      <p className="text-xs font-satoshi font-bold text-black/70">All AI segmentation happens locally inside your browser RAM</p>
     </motion.div>
   );
 };

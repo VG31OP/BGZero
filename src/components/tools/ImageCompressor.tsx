@@ -137,22 +137,22 @@ const ImageCompressor = ({ image, file, baseName, onProcessed }: Props) => {
       transition={{ duration: 0.4 }}
       className="glass-card-elevated p-5 flex flex-col items-center gap-6"
     >
-      <div className="w-full max-w-md space-y-3">
-        <label className="text-sm text-muted-foreground">Target file size</label>
-        <p className="text-xs text-muted-foreground/90">Enter desired output size</p>
+      <div className="w-full max-w-md space-y-3 text-left">
+        <label className="font-cabinet font-extrabold text-sm text-black">Target file size</label>
+        <p className="font-satoshi text-xs text-black/70">Enter desired output size</p>
         <div className="flex gap-2">
           <input
             type="number"
             min={1}
             value={targetSizeValue}
             onChange={(e) => setTargetSizeValue(clamp(Number(e.target.value || 1), 1, 20000))}
-            className="flex-1 px-3 py-2 rounded-xl bg-secondary border border-border/60 text-sm outline-none focus:border-primary/50 transition-colors"
+            className="flex-1 px-3 py-2 rounded-xl bg-white border-2 border-black text-black font-cabinet font-bold text-sm outline-none shadow-[2px_2px_0px_0px_#000000] focus:bg-[#ffe17c] transition-colors"
             disabled={processing}
           />
           <select
             value={targetUnit}
             onChange={(e) => setTargetUnit(e.target.value as SizeUnit)}
-            className="px-3 py-2 rounded-xl bg-secondary border border-border/60 text-sm outline-none focus:border-primary/50 transition-colors"
+            className="px-3 py-2 rounded-xl bg-white border-2 border-black text-black font-cabinet font-bold text-sm outline-none shadow-[2px_2px_0px_0px_#000000] focus:bg-[#ffe17c] transition-colors"
             disabled={processing}
           >
             <option value="KB">KB</option>

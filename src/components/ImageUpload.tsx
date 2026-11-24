@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CloudUpload, X, Image as ImageIcon } from "lucide-react";
+import { UploadCloud, X, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 
 interface ImageUploadProps {
@@ -29,7 +29,7 @@ const ImageUpload = ({ image, fileName, onImageSelect, onClear }: ImageUploadPro
       }
       const previewUrl = URL.createObjectURL(file);
       onImageSelect(previewUrl, file);
-      toast.success("Image uploaded!");
+      toast.success("Image loaded into browser memory!");
     },
     [onImageSelect]
   );
@@ -49,7 +49,7 @@ const ImageUpload = ({ image, fileName, onImageSelect, onClear }: ImageUploadPro
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full max-w-3xl mx-auto px-4"
+      className="w-full max-w-3xl mx-auto"
     >
       <AnimatePresence mode="wait">
         {!image ? (
@@ -58,8 +58,7 @@ const ImageUpload = ({ image, fileName, onImageSelect, onClear }: ImageUploadPro
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
-            whileHover={{ y: -2 }}
-            className={`upload-zone group flex flex-col items-center justify-center gap-5 p-10 sm:p-14 ${dragOver ? "drag-over" : ""}`}
+            className={`upload-zone flex flex-col items-center justify-center gap-5 p-10 sm:p-14 ${dragOver ? "drag-over" : ""}`}
             onDrop={onDrop}
             onDragOver={(e) => {
               e.preventDefault();
@@ -68,12 +67,16 @@ const ImageUpload = ({ image, fileName, onImageSelect, onClear }: ImageUploadPro
             onDragLeave={() => setDragOver(false)}
             onClick={() => inputRef.current?.click()}
           >
-            <div className="w-16 h-16 rounded-2xl bg-secondary/70 flex items-center justify-center border border-border/70 transition-transform duration-300 group-hover:scale-105">
-              <CloudUpload className="w-7 h-7 text-primary" />
+            <div className="w-16 h-16 rounded-xl bg-[#b7c6c2] border-2 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_#000000]">
+              <UploadCloud className="w-8 h-8 text-black" />
             </div>
             <div className="text-center">
-              <p className="font-semibold text-foreground text-lg">Drop your image here or click to upload</p>
-              <p className="text-sm text-muted-foreground mt-1">JPG, PNG, WEBP � Max 20MB</p>
+              <p className="font-cabinet font-extrabold text-black text-xl sm:text-2xl">
+                Drop your image here or click to browse
+              </p>
+              <p className="text-sm font-satoshi font-medium text-black/70 mt-1">
+                JPG, PNG, WEBP • Up to 20MB • 100% Client-Side In-Browser RAM
+              </p>
             </div>
             <input
               ref={inputRef}
@@ -92,19 +95,20 @@ const ImageUpload = ({ image, fileName, onImageSelect, onClear }: ImageUploadPro
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className="glass-card-elevated p-4 relative"
+            className="bg-white border-2 border-black rounded-xl p-4 shadow-[8px_8px_0px_0px_#000000] relative"
           >
             <button
               onClick={onClear}
-              className="absolute top-3 right-3 z-10 w-8 h-8 rounded-lg bg-secondary/80 flex items-center justify-center hover:bg-destructive/80 transition-colors"
+              className="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg bg-white border-2 border-black flex items-center justify-center hover:bg-[#ffe17c] shadow-[2px_2px_0px_0px_#000000] transition-colors"
+              title="Remove image"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5 text-black" />
             </button>
-            <div className="image-preview-container shadow-2xl shadow-black/20">
-              <img src={image} alt="Preview" className="w-full max-h-72 object-contain" />
+            <div className="image-preview-container">
+              <img src={image} alt="Preview" className="w-full max-h-80 object-contain p-2" />
             </div>
-            <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
-              <ImageIcon className="w-4 h-4" />
+            <div className="flex items-center gap-2 mt-3 text-sm font-satoshi font-semibold text-black">
+              <ImageIcon className="w-4 h-4 text-black" />
               <span className="truncate">{fileName}</span>
             </div>
           </motion.div>

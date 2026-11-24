@@ -14,9 +14,19 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        cabinet: ['"Cabinet Grotesk"', 'system-ui', 'sans-serif'],
+        satoshi: ['"Satoshi"', 'system-ui', 'sans-serif'],
+        sans: ['"Satoshi"', 'system-ui', 'sans-serif'],
       },
       colors: {
+        neo: {
+          yellow: "#ffe17c",
+          charcoal: "#171e19",
+          sage: "#b7c6c2",
+          dark: "#272727",
+          black: "#000000",
+          white: "#ffffff",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -51,21 +61,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      boxShadow: {
+        "hard-sm": "2px 2px 0px 0px #000000",
+        "hard": "4px 4px 0px 0px #000000",
+        "hard-lg": "8px 8px 0px 0px #000000",
+        "hard-xl": "12px 12px 0px 0px #000000",
       },
       keyframes: {
         "accordion-down": {
@@ -76,15 +77,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+        "marquee": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "shimmer": "shimmer 2s linear infinite",
+        "marquee": "marquee 25s linear infinite",
       },
     },
   },

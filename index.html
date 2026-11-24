@@ -1,54 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BgZero — Instant Client-Side AI Background Remover | By Vraj Shiroya</title>
-    
-    <!-- Primary Technical SEO Metadata -->
-    <meta
-      name="description"
-      content="Free, 100% private browser-based AI background remover and image compressor. Zero server uploads, instant WebAssembly & Canvas processing in local browser RAM. Engineered by Vraj Shiroya (VG31OP)."
-    />
-    <meta name="keywords" content="background remover, remove background, client-side AI, WebAssembly background removal, privacy first image tools, Vraj Shiroya, VG31OP, free image cutout, transparent PNG" />
-    <meta name="author" content="Vraj Shiroya" />
-    <meta name="creator" content="Vraj Shiroya (VG31OP)" />
-    <meta name="publisher" content="Vraj Shiroya" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="theme-color" content="#08080A" />
 
-    <!-- Canonical URL & Machine Discovery Directives -->
-    <link rel="canonical" href="https://bgzero.shiroya.in/" />
-    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context Specification" />
-    <link rel="author" href="https://vraj.shiroya.in/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-bgzero.svg" />
-    <link rel="apple-touch-icon" href="/favicon-bgzero.svg" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free AI Background Remover Online — Instant Transparent PNG | BgZero</title>
 
-    <!-- Open Graph Protocol (Facebook, LinkedIn, Discord) -->
-    <meta property="og:site_name" content="BgZero" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bgzero.shiroya.in/" />
-    <meta property="og:title" content="BgZero — Instant Client-Side AI Background Remover" />
-    <meta
-      property="og:description"
-      content="Free, 100% client-side AI background remover. Images never leave your machine — zero cloud uploads."
-    />
-    <meta property="og:image" content="https://bgzero.shiroya.in/favicon-bgzero.svg" />
-    <meta property="og:locale" content="en_US" />
+  <!-- Primary Technical SEO Metadata -->
+  <meta name="description"
+    content="Remove background from images instantly for free with BgZero. 100% private in-browser AI background remover with zero cloud uploads. Download full-resolution transparent PNG cutouts with no watermarks and no sign-up required." />
+  <meta name="keywords"
+    content="bg remover, background remover, free background remover, remove background from image, transparent png, ai background remover, bg zero, bgzero, remove bg free, white background photo editor, product photo background remover, passport photo background, client-side background removal" />
+  <meta name="author" content="Vraj Shiroya" />
+  <meta name="creator" content="Vraj Shiroya (VG31OP)" />
+  <meta name="publisher" content="Vraj Shiroya" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#ffe17c" />
 
-    <!-- Twitter / X Card Metadata -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@vg31op" />
-    <meta name="twitter:creator" content="@vg31op" />
-    <meta name="twitter:title" content="BgZero — Instant Client-Side AI Background Remover" />
-    <meta
-      name="twitter:description"
-      content="Free, 100% private browser AI background remover with zero cloud uploads. Engineered by Vraj Shiroya."
-    />
-    <meta name="twitter:image" content="https://bgzero.shiroya.in/favicon-bgzero.svg" />
+  <!-- Typography: Cabinet Grotesk & Satoshi via Fontshare -->
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@400,500,700,900&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Structured Data (JSON-LD: WebApplication & Person Attribution) -->
-    <script type="application/ld+json">
+  <!-- Canonical URL & Machine Discovery Directives -->
+  <link rel="canonical" href="https://bgzero.shiroya.in/" />
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context Specification" />
+  <link rel="author" href="https://vraj.shiroya.in/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon-bgzero.svg" />
+  <link rel="apple-touch-icon" href="/favicon-bgzero.svg" />
+
+  <!-- Open Graph Protocol (Facebook, LinkedIn, Discord) -->
+  <meta property="og:site_name" content="BgZero" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bgzero.shiroya.in/" />
+  <meta property="og:title" content="Free AI Background Remover Online — Instant Transparent PNG | BgZero" />
+  <meta property="og:description"
+    content="100% free, private browser-based AI background remover. Remove backgrounds in seconds with zero cloud uploads and download full-resolution transparent PNGs." />
+  <meta property="og:image" content="https://bgzero.shiroya.in/favicon-bgzero.svg" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vg31op" />
+  <meta name="twitter:creator" content="@vg31op" />
+  <meta name="twitter:title" content="Free AI Background Remover Online — Instant Transparent PNG | BgZero" />
+  <meta name="twitter:description"
+    content="100% private in-browser AI background remover. Zero cloud uploads, no watermarks, unlimited full-resolution HD downloads." />
+  <meta name="twitter:image" content="https://bgzero.shiroya.in/favicon-bgzero.svg" />
+
+  <!-- Structured Data (JSON-LD: WebApplication, BreadcrumbList, FAQPage, HowTo) -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
@@ -57,7 +60,7 @@
           "@id": "https://bgzero.shiroya.in/#website",
           "url": "https://bgzero.shiroya.in/",
           "name": "BgZero",
-          "description": "Instant client-side AI background remover and image compressor with zero server uploads.",
+          "description": "Free online AI background remover and image compressor with zero server uploads and 100% client-side privacy.",
           "inLanguage": "en-US",
           "publisher": {
             "@id": "https://vraj.shiroya.in/#person"
@@ -66,17 +69,27 @@
         {
           "@type": "WebApplication",
           "@id": "https://bgzero.shiroya.in/#software",
-          "name": "BgZero",
+          "name": "BgZero — Free AI Background Remover",
           "url": "https://bgzero.shiroya.in/",
           "codeRepository": "https://github.com/VG31OP/BGZero",
           "applicationCategory": "GraphicsApplication",
-          "operatingSystem": "All modern browsers",
+          "applicationSubCategory": "AI Image Processing & Background Removal",
+          "operatingSystem": "All modern browsers (Chrome, Firefox, Safari, Edge)",
           "browserRequirements": "Requires JavaScript and WebAssembly support",
           "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
           },
+          "featureList": [
+            "100% Client-Side In-Browser AI Processing",
+            "Zero Cloud Uploads (Complete Privacy)",
+            "Unlimited Full-Resolution HD Downloads",
+            "No Watermarks",
+            "No Account or Sign-Up Required",
+            "Transparent PNG Output & Custom Backgrounds",
+            "Integrated Client-Side Image Compressor"
+          ],
           "description": "Instant browser-based AI background remover. Isolates subjects and produces transparent PNGs locally in browser memory without sending image bytes to third-party servers.",
           "author": {
             "@type": "Person",
@@ -114,7 +127,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "BgZero",
+              "name": "BgZero Free AI Background Remover",
               "item": "https://bgzero.shiroya.in/"
             }
           ]
@@ -146,14 +159,125 @@
               "url": "https://vraj.shiroya.in/"
             }
           ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://bgzero.shiroya.in/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is BgZero really 100% free with no watermarks?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, BgZero is completely free forever. There are no watermarks, no subscriptions, no credit systems, and no hidden fees. You can process unlimited images and download full-resolution transparent PNGs without signing up."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my photos uploaded to any remote server or cloud?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Unlike other online background removers that send your private photos to third-party cloud servers, BgZero executes 100% locally in your browser using client-side WebAssembly and HTML5 Canvas. Your photos never leave your device."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I remove the background from an image for free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Simply drag and drop or upload your image (JPG, PNG, or WebP up to 20MB). BgZero's in-browser AI model automatically detects the subject and removes the background in seconds. Then click Download to save your transparent PNG."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What image formats and file sizes are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BgZero supports JPG, JPEG, PNG, and WebP image formats up to 20MB per file with full-resolution output."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I also compress images or create white background product photos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! BgZero includes a built-in client-side image compressor to reduce file sizes without quality loss, and allows you to preview and download cutouts on transparent, white, or custom solid backgrounds."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://bgzero.shiroya.in/#howto",
+          "name": "How to Remove Background from Image Online for Free",
+          "description": "Step-by-step instructions for removing image backgrounds locally using BgZero's free in-browser AI tool.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Upload Your Image",
+              "text": "Drag and drop or select your photo (JPG, PNG, or WebP up to 20MB) into the upload area.",
+              "url": "https://bgzero.shiroya.in/#upload"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Automatic AI Subject Isolation",
+              "text": "BgZero's neural network runs locally inside your browser to accurately detect and cut out people, products, animals, and objects in seconds with zero cloud uploads.",
+              "url": "https://bgzero.shiroya.in/#process"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Download Full-Resolution Transparent PNG",
+              "text": "Preview your cutout and click Download to save the transparent PNG image at full original resolution with zero watermarks.",
+              "url": "https://bgzero.shiroya.in/#download"
+            }
+          ]
         }
       ]
     }
     </script>
-  </head>
+</head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body>
+  <div id="root"></div>
+
+  <noscript>
+    <div
+      style="max-width: 800px; margin: 40px auto; padding: 20px; font-family: sans-serif; line-height: 1.6; color: #e2e8f0; background: #0b1120; border-radius: 12px;">
+      <h1>Free AI Background Remover Online — Instant Transparent PNG | BgZero</h1>
+      <p><strong>BgZero</strong> is a 100% free, private, client-side AI background remover and image compressor
+        engineered by <a href="https://vraj.shiroya.in/" style="color: #38bdf8;">Vraj Shiroya</a>. Remove backgrounds
+        from your images automatically in seconds with zero server uploads.</p>
+
+      <h2>Why BgZero?</h2>
+      <ul>
+        <li><strong>100% Private</strong>: Photos never leave your device. All AI segmentation runs in local
+          WebAssembly.</li>
+        <li><strong>Unlimited Full HD Resolution</strong>: Download crystal-clear transparent PNGs with no watermarks
+          and no downscaling.</li>
+        <li><strong>No Sign-Up Required</strong>: No credits, no subscriptions, and no account creation.</li>
+        <li><strong>Multi-Format Support</strong>: Process JPG, PNG, and WebP images up to 20MB.</li>
+      </ul>
+
+      <h2>How to Remove Background from Image</h2>
+      <ol>
+        <li>Upload or drag and drop your photo into BgZero.</li>
+        <li>Our in-browser AI model automatically detects subjects (people, products, animals, graphics) and removes the
+          backdrop.</li>
+        <li>Download your high-resolution transparent PNG cutout instantly.</li>
+      </ol>
+
+      <h2>Popular Use Cases</h2>
+      <p>Ideal for Amazon and Shopify e-commerce product photography, passport and visa headshots, graphic design,
+        YouTube thumbnails, stickers, and game sprites.</p>
+      <p><em>Note: BgZero requires JavaScript and WebAssembly enabled in your browser to run the local AI neural
+          network.</em></p>
+    </div>
+  </noscript>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

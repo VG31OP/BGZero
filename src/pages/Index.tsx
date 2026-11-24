@@ -25,26 +25,26 @@ const Index = () => {
       {/* 2. Hero Section */}
       <HeroSection onStartClick={scrollToStudio} />
 
-      {/* 3. Social Proof Marquee */}
+      {/* 3. Interactive Studio (Functional In-Browser Tool + FAQ) - Directly under Hero */}
+      <InteractiveStudio />
+
+      {/* 4. Social Proof Marquee */}
       <SocialProofMarquee />
 
-      {/* 4. Problem vs Solution */}
+      {/* 5. Problem vs Solution */}
       <ProblemVsSolution />
 
-      {/* 5. Feature Grid */}
+      {/* 6. Feature Grid */}
       <FeatureGrid />
 
-      {/* 6. How It Works (Dark Mode) */}
+      {/* 7. How It Works (Dark Mode) */}
       <HowItWorks />
 
-      {/* 7. Use Case Personas Bento Grid */}
+      {/* 8. Use Case Personas Bento Grid */}
       <UseCasePersonas />
 
-      {/* 8. Testimonials with Asymmetric Rounding */}
+      {/* 9. Testimonials with Asymmetric Rounding */}
       <Testimonials />
-
-      {/* 9. Interactive Studio (Functional In-Browser Tool + FAQ) */}
-      <InteractiveStudio />
 
       {/* 10. Final CTA & 4-Column Charcoal Footer */}
       <FinalCTAAndFooter />

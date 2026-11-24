@@ -26,6 +26,9 @@ function formatProgressStage(key: string): string {
   if (key.includes("fetch:wasm") || key.includes("wasm")) {
     return "Initializing High-Speed WebAssembly SIMD Engine...";
   }
+  if (key.includes("compute:decode") || key.includes("decode")) {
+    return "Decoding Image Buffer...";
+  }
   if (key.includes("compute") || key.includes("inference")) {
     return "Executing Neural AI Segmentation...";
   }
@@ -79,26 +82,45 @@ function loadImage(source: string | Blob | File): Promise<HTMLImageElement> {
 }
 
 /**
- * Downscales an image to a safe maximum dimension to prevent V8 out-of-memory crashes.
+ * Converts a Canvas to a Blob reliably across all browsers.
  */
-async function createInferenceCanvas(
+function canvasToBlob(canvas: HTMLCanvasElement, mimeType: string, quality?: number): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (blob) resolve(blob);
+        else reject(new Error("Canvas toBlob encoding failed."));
+      },
+      mimeType,
+      quality
+    );
+  });
+}
+
+/**
+ * Prepares an inference input Blob.
+ * If the image is large (> maxDimension), downscales it to prevent memory crashes,
+ * and encodes it into a standard JPEG Blob that @imgly can decode properly.
+ */
+async function prepareInferenceBlob(
   sourceImg: HTMLImageElement,
+  originalSource: string | Blob | File,
   maxDimension: number
-): Promise<{ canvas: HTMLCanvasElement; isScaled: boolean }> {
+): Promise<{ inferenceBlob: Blob; isScaled: boolean }> {
   const origW = sourceImg.naturalWidth || sourceImg.width;
   const origH = sourceImg.naturalHeight || sourceImg.height;
 
+  // If already within safe dimension and source is a Blob/File, pass directly
   if (origW <= maxDimension && origH <= maxDimension) {
-    const canvas = document.createElement("canvas");
-    canvas.width = origW;
-    canvas.height = origH;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("Canvas context is unavailable.");
-    ctx.drawImage(sourceImg, 0, 0);
-    return { canvas, isScaled: false };
+    if (originalSource instanceof Blob) {
+      return { inferenceBlob: originalSource, isScaled: false };
+    }
   }
 
-  const scale = Math.min(maxDimension / origW, maxDimension / origH);
+  const maxSide = Math.max(origW, origH);
+  const needsScale = maxSide > maxDimension;
+  const scale = needsScale ? maxDimension / maxSide : 1;
+
   const targetW = Math.max(1, Math.round(origW * scale));
   const targetH = Math.max(1, Math.round(origH * scale));
 
@@ -108,12 +130,14 @@ async function createInferenceCanvas(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Canvas context is unavailable.");
 
-  // High-quality image smoothing
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
   ctx.drawImage(sourceImg, 0, 0, targetW, targetH);
 
-  return { canvas, isScaled: true };
+  // Always produce a valid JPEG Blob for @imgly's imageDecode
+  const inferenceBlob = await canvasToBlob(canvas, "image/jpeg", 0.95);
+
+  return { inferenceBlob, isScaled: needsScale };
 }
 
 /**
@@ -139,14 +163,15 @@ export async function executeAiBackgroundRemoval(
     total: 100,
   });
 
-  // 1. Decode original image
+  // 1. Decode original image to measure dimensions
   const originalImg = await loadImage(source);
   const originalWidth = originalImg.naturalWidth || originalImg.width;
   const originalHeight = originalImg.naturalHeight || originalImg.height;
 
-  // 2. Prepare safe inference buffer (max 1024px)
-  const { canvas: inferenceCanvas, isScaled } = await createInferenceCanvas(
+  // 2. Prepare safe inference Blob (never pass raw HTMLCanvasElement to @imgly)
+  const { inferenceBlob, isScaled } = await prepareInferenceBlob(
     originalImg,
+    source,
     maxInferenceDimension
   );
 
@@ -171,17 +196,16 @@ export async function executeAiBackgroundRemoval(
       if (!onProgress) return;
       const stage = formatProgressStage(key);
       const ratio = total > 0 ? current / total : 0.5;
-      
-      // Calculate realistic smooth percentage bar
+
       let pct = 20;
       if (key.includes("fetch:model")) {
-        pct = 20 + Math.round(ratio * 35); // 20% to 55%
+        pct = 20 + Math.round(ratio * 35);
       } else if (key.includes("fetch:wasm")) {
-        pct = 55 + Math.round(ratio * 15); // 55% to 70%
+        pct = 55 + Math.round(ratio * 15);
       } else if (key.includes("compute")) {
-        pct = 70 + Math.round(ratio * 20); // 70% to 90%
+        pct = 70 + Math.round(ratio * 20);
       } else if (key.includes("encode")) {
-        pct = 90 + Math.round(ratio * 8); // 90% to 98%
+        pct = 90 + Math.round(ratio * 8);
       }
 
       onProgress({
@@ -194,8 +218,8 @@ export async function executeAiBackgroundRemoval(
     },
   };
 
-  // 4. Run AI background removal on the inference canvas
-  const aiResultBlob = await removeBackground(inferenceCanvas, config);
+  // 4. Run AI background removal on the inference Blob
+  const aiResultBlob = await removeBackground(inferenceBlob, config);
 
   // 5. If image was scaled and user wants full resolution, composite back to original dimensions
   if (isScaled && preserveOriginalResolution) {
@@ -224,12 +248,7 @@ export async function executeAiBackgroundRemoval(
     ctx.globalCompositeOperation = "source-in";
     ctx.drawImage(originalImg, 0, 0, originalWidth, originalHeight);
 
-    const fullResBlob = await new Promise<Blob>((resolve, reject) => {
-      fullCanvas.toBlob((blob) => {
-        if (blob) resolve(blob);
-        else reject(new Error("Failed to encode full-resolution PNG."));
-      }, "image/png");
-    });
+    const fullResBlob = await canvasToBlob(fullCanvas, "image/png");
 
     onProgress?.({
       stage: "Background removed successfully!",

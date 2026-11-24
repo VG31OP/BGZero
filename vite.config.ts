@@ -7,8 +7,18 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "credentialless",
+    },
     hmr: {
       overlay: false,
+    },
+  },
+  preview: {
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "credentialless",
     },
   },
   plugins: [react()],

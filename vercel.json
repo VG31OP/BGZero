@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!assets/|favicon|robots\\.txt|sitemap\\.xml|llms\\.txt|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "credentialless"
+        }
+      ]
+    }
+  ]
+}

@@ -25,11 +25,11 @@ const Index = () => {
       {/* 2. Hero Section */}
       <HeroSection onStartClick={scrollToStudio} />
 
-      {/* 3. Interactive Studio (Functional In-Browser Tool + FAQ) - Directly under Hero */}
-      <InteractiveStudio />
-
-      {/* 4. Social Proof Marquee */}
+      {/* 3. Social Proof Marquee (Between Hero and Studio) */}
       <SocialProofMarquee />
+
+      {/* 4. Interactive Studio (Functional In-Browser Tool + FAQ) */}
+      <InteractiveStudio />
 
       {/* 5. Problem vs Solution */}
       <ProblemVsSolution />
